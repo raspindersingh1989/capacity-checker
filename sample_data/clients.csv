@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 call_id,full_name,postcode,day_pattern,start_time,end_time,duration_minutes,carers_required
 1,Client 1,DA2 7HG   ,Thurs,11:00,16:00,300,1
 1,Client 1,DA2 7HG   ,Mon,11:00,17:00,360,1
@@ -197,3 +198,20 @@ call_id,full_name,postcode,day_pattern,start_time,end_time,duration_minutes,care
 96,Client 96,DA2 7ND   ,Mon - Sun,12:45,13:45,60,1
 96,Client 96,DA2 7ND   ,Mon - Sun,18:15,18:45,30,1
 97,Client 97,ME7 1QP   ,Mon and Wed,11:00,13:00,120,1
+=======
+client_id,full_name,postcode
+1,"Abel, Andrew",DA2 7HG
+2,"Adshead, Lois",DA12 5AS
+3,"Allwood, Mavis",ME8 9NT
+4,"Appleton, Rosalind",DA11 8LR
+5,"Batson, David",DA13 0EL
+6,"Biggar, Elizabeth",BR8 7RA
+7,"Billing, Maureen",DA3 7RR
+8,"Crouch, Linda",DA11 8PJ
+9,"Liddell, Sylvia",DA11 7JR
+10,"Matton, Gillian",DA13 9DR
+11,"McKay, Margaret",DA13 9DR
+12,"Nicholls, Joy",DA13 9DR
+13,"Olliffe, Patrick",DA12 2QN
+14,"Pearce, Lynn",DA11 7JP
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c

@@ -1,10 +1,13 @@
 -- Capacity Checker database schema
 -- Designed from the existing PeoplePlanner-derived spreadsheet columns
+<<<<<<< HEAD
 --
 -- NOTE: sample_data/carers.csv is a single combined file for ease of data entry
 -- (carer info repeated on each availability row). In the actual database, we keep
 -- carers and their availability windows as two separate, linked tables — this avoids
 -- duplicating/risking inconsistent carer info (e.g. skills) across multiple rows.
+=======
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 CREATE TABLE clients (
     client_id       SERIAL PRIMARY KEY,
@@ -22,13 +25,20 @@ CREATE TABLE carers (
     full_name       TEXT NOT NULL,          -- e.g. 'Kaur, Harpreet'
     postcode        TEXT,                   -- carer base/home postcode, optional
     latitude        NUMERIC(9,6),
+<<<<<<< HEAD
     longitude       NUMERIC(9,6),
+=======
+    longitude        NUMERIC(9,6),
+    shift_start     TIME,                   -- e.g. 07:00
+    shift_end       TIME,                   -- e.g. 19:00
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     max_travel_miles NUMERIC(5,2),
     skills          TEXT,                   -- e.g. 'hoist, two-person'
     created_at      TIMESTAMP DEFAULT now(),
     updated_at      TIMESTAMP DEFAULT now()
 );
 
+<<<<<<< HEAD
 -- Multiple availability windows per carer, e.g. Harpreet:
 --   09:00-12:00 core, 13:00-14:00 optional, 16:00-18:00 optional
 CREATE TABLE carer_availability (
@@ -38,6 +48,16 @@ CREATE TABLE carer_availability (
     start_time         TIME NOT NULL,
     end_time           TIME NOT NULL,
     availability_type  TEXT NOT NULL DEFAULT 'core'  -- 'core' or 'optional'
+=======
+-- Recurring unavailable windows per carer, e.g. Harpreet 'unav 8-9'
+CREATE TABLE carer_unavailability (
+    unavailability_id SERIAL PRIMARY KEY,
+    carer_id        INTEGER REFERENCES carers(carer_id),
+    day_pattern     TEXT,                   -- e.g. 'Mon-Sun', 'Tues-Sun'
+    start_time      TIME NOT NULL,
+    end_time        TIME NOT NULL,
+    reason          TEXT
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 );
 
 -- One row per recurring call, matches your spreadsheet rows directly
@@ -76,4 +96,7 @@ CREATE TABLE travel_times (
 CREATE INDEX idx_calls_client ON calls(client_id);
 CREATE INDEX idx_assignments_carer ON assignments(carer_id);
 CREATE INDEX idx_assignments_call ON assignments(call_id);
+<<<<<<< HEAD
 CREATE INDEX idx_availability_carer ON carer_availability(carer_id);
+=======
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c

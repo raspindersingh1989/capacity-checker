@@ -3,6 +3,11 @@ Basic tests for capacity_checker.py
 
 Run with:
     python -m unittest test_capacity_checker.py
+<<<<<<< HEAD
+=======
+
+No external test framework needed — uses Python's built-in unittest.
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 """
 
 import datetime
@@ -12,7 +17,10 @@ from capacity_checker import (
     Assignment,
     Call,
     Carer,
+<<<<<<< HEAD
     CarerAvailability,
+=======
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     CapacityChecker,
     Client,
     day_matches_pattern,
@@ -30,13 +38,19 @@ class TestDayMatching(unittest.TestCase):
         self.assertFalse(day_matches_pattern("Mon", "Tues-Sun"))
 
     def test_exclusion(self):
+<<<<<<< HEAD
         self.assertFalse(day_matches_pattern("Sat", "Mon-Sun (minus Sat)"))
         self.assertTrue(day_matches_pattern("Fri", "Mon-Sun (minus Sat)"))
+=======
+        self.assertFalse(day_matches_pattern("Tues", "Mon-Sun (minus Tues)"))
+        self.assertTrue(day_matches_pattern("Wed", "Mon-Sun (minus Tues)"))
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 
 class TestCapacityChecker(unittest.TestCase):
     def setUp(self):
         self.clients = [Client(1, "Test Client", "AB1 2CD")]
+<<<<<<< HEAD
         self.carers = [Carer(1, "Test Carer")]
         self.availability = [
             CarerAvailability(1, "Mon-Sun", datetime.time(9, 0), datetime.time(12, 0), "core"),
@@ -146,3 +160,43 @@ class TestOvernightShift(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+        self.carers = [
+            Carer(1, "Test Carer", datetime.time(7, 0), datetime.time(17, 0))
+        ]
+        self.calls = [
+            Call(1, 1, "Mon-Sun", datetime.time(9, 0), datetime.time(9, 45), 45),
+        ]
+        self.assignments = [Assignment(call_id=1, carer_id=1)]
+        self.checker = CapacityChecker(
+            self.clients, self.carers, self.calls, self.assignments
+        )
+
+    def test_carer_busy_during_call(self):
+        self.assertFalse(
+            self.checker.is_carer_free(1, "Mon", datetime.time(9, 15), 15)
+        )
+
+    def test_carer_free_before_call(self):
+        self.assertTrue(
+            self.checker.is_carer_free(1, "Mon", datetime.time(7, 0), 30)
+        )
+
+    def test_carer_free_after_call(self):
+        self.assertTrue(
+            self.checker.is_carer_free(1, "Mon", datetime.time(10, 0), 60)
+        )
+
+    def test_outside_shift_hours(self):
+        self.assertFalse(
+            self.checker.is_carer_free(1, "Mon", datetime.time(18, 0), 30)
+        )
+
+    def test_free_slots(self):
+        slots = self.checker.free_slots_for_carer(1, "Mon")
+        self.assertEqual(slots, ["07:00-09:00", "09:45-17:00"])
+
+
+if __name__ == "__main__":
+    unittest.main()
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c

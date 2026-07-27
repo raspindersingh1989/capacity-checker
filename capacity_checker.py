@@ -1,4 +1,5 @@
 """
+<<<<<<< HEAD
 Capacity Checker — Phase 1 logic (single combined carers.csv, core/optional
 windows, days-off support, overnight shift support, and double-handed calls)
 
@@ -16,6 +17,16 @@ Supports:
 
 This version does NOT use Google Maps yet — it only checks time availability
 (no travel time). Travel-time awareness is added in Phase 2.
+=======
+Capacity Checker — Phase 1 logic
+
+Reads the sample_data CSVs (clients, carers, calls) and answers:
+  "Which carers are free on a given day/time for a given duration?"
+
+This version does NOT use Google Maps yet — it only checks time availability
+(no travel time). This lets you test the core logic locally before adding
+travel-time/postcode matching.
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 How to run:
     python capacity_checker.py
@@ -25,12 +36,21 @@ Requires: Python 3.8+ (no extra packages needed — uses only the standard libra
 
 import csv
 import datetime
+<<<<<<< HEAD
 from dataclasses import dataclass
 from typing import List, Optional
 import re  # add this near the top of the file with the other imports
 
 # ---------------------------------------------------------------------------
 # Data classes
+=======
+from dataclasses import dataclass, field
+from typing import List, Optional
+
+
+# ---------------------------------------------------------------------------
+# Data classes — simple containers for each row of data
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -44,10 +64,16 @@ class Client:
 class Carer:
     carer_id: int
     full_name: str
+<<<<<<< HEAD
+=======
+    shift_start: datetime.time
+    shift_end: datetime.time
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     skills: str = ""
 
 
 @dataclass
+<<<<<<< HEAD
 class CarerAvailability:
     carer_id: int
     day_pattern: str
@@ -60,12 +86,19 @@ class CarerAvailability:
 class Call:
     call_id: int           # unique internal id, one per CSV row
     call_number: int        # the original (repeated) call_id from the spreadsheet
+=======
+class Call:
+    call_id: int
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     client_id: int
     day_pattern: str
     start_time: datetime.time
     end_time: datetime.time
     duration_minutes: int
+<<<<<<< HEAD
     carers_required: int = 1  # how many carers this call needs (double-handed = 2)
+=======
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 
 @dataclass
@@ -77,6 +110,12 @@ class Assignment:
 # ---------------------------------------------------------------------------
 # Day pattern matching
 # ---------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+# Your spreadsheet uses patterns like:
+#   "Mon-Sun", "Mon-Sun (minus Tues)", "Thurs", "Friday", "Tues-Sun"
+# This function checks whether a given weekday name matches a pattern.
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 DAY_ORDER = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"]
 
@@ -97,6 +136,7 @@ def _normalise_day(token: str) -> Optional[str]:
 
 def day_matches_pattern(day: str, pattern: str) -> bool:
     """
+<<<<<<< HEAD
     Returns True if `day` (e.g. 'Wed') falls inside `pattern`, which may be:
       - a single day: 'Thurs'
       - a simple range: 'Mon-Sun', 'Mon - Fri'
@@ -105,6 +145,10 @@ def day_matches_pattern(day: str, pattern: str) -> bool:
       - a multi-dash list (not a true range): 'Mon - Weds - Fri'
       - a space-separated list: 'Tues Weds Fri Sat Sun'
       - the shorthand 'M-S' meaning every day of the week
+=======
+    Returns True if `day` (e.g. 'Wed') falls inside `pattern`
+    (e.g. 'Mon-Sun (minus Tues)', 'Thurs', 'Tues-Sun').
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     """
     day = _normalise_day(day)
     if day is None:
@@ -112,11 +156,16 @@ def day_matches_pattern(day: str, pattern: str) -> bool:
 
     pattern = pattern.strip()
 
+<<<<<<< HEAD
     # Handle exclusions in parentheses, e.g. "Mon - Sun (minus Sat)"
+=======
+    # Split off any "(minus X, Y)" exclusion clause
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     exclusions = []
     if "(" in pattern and ")" in pattern:
         main_part, exclusion_part = pattern.split("(", 1)
         exclusion_part = exclusion_part.replace(")", "")
+<<<<<<< HEAD
         exclusion_part = exclusion_part.lower().replace("minus", "").replace("excl", "")
         exclusions = [
             _normalise_day(tok)
@@ -124,10 +173,20 @@ def day_matches_pattern(day: str, pattern: str) -> bool:
             if tok.strip()
         ]
         pattern = main_part.strip()
+=======
+        exclusion_part = exclusion_part.lower().replace("minus", "")
+        exclusions = [
+            _normalise_day(tok) for tok in exclusion_part.split(",") if tok.strip()
+        ]
+        pattern = main_part.strip()
+    else:
+        pattern = pattern.strip()
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
     if day in exclusions:
         return False
 
+<<<<<<< HEAD
     # Shorthand meaning "every day of the week"
     if pattern.strip().upper() in ("M-S", "M - S"):
         return True
@@ -184,16 +243,43 @@ def _next_day(day: str) -> str:
     day = _normalise_day(day)
     idx = DAY_ORDER.index(day)
     return DAY_ORDER[(idx + 1) % 7]
+=======
+    # Single day, e.g. "Thurs" or "Friday"
+    if "-" not in pattern:
+        return _normalise_day(pattern) == day
+
+    # Range, e.g. "Mon-Sun", "Tues-Sun"
+    start_str, end_str = [p.strip() for p in pattern.split("-", 1)]
+    start_day = _normalise_day(start_str)
+    end_day = _normalise_day(end_str)
+    if start_day is None or end_day is None:
+        raise ValueError(f"Unrecognised day pattern: {pattern}")
+
+    start_idx = DAY_ORDER.index(start_day)
+    end_idx = DAY_ORDER.index(end_day)
+    day_idx = DAY_ORDER.index(day)
+
+    if start_idx <= end_idx:
+        return start_idx <= day_idx <= end_idx
+    else:
+        # wraps around the week, e.g. "Sat-Mon"
+        return day_idx >= start_idx or day_idx <= end_idx
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 
 # ---------------------------------------------------------------------------
 # CSV loading
 # ---------------------------------------------------------------------------
 
+<<<<<<< HEAD
 def _parse_time(value: str) -> Optional[datetime.time]:
     value = value.strip()
     if not value:
         return None
+=======
+def _parse_time(value: str) -> datetime.time:
+    value = value.strip()
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     for fmt in ("%H:%M", "%H:%M:%S"):
         try:
             return datetime.datetime.strptime(value, fmt).time()
@@ -202,6 +288,7 @@ def _parse_time(value: str) -> Optional[datetime.time]:
     raise ValueError(f"Could not parse time: {value}")
 
 
+<<<<<<< HEAD
 def load_clients_and_calls(path: str):
     """
     Reads the combined clients.csv (one row per call, client info repeated
@@ -294,6 +381,53 @@ def load_carers_and_availability(path: str):
                 )
             )
     return list(carers.values()), availability
+=======
+def load_clients(path: str) -> List[Client]:
+    clients = []
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            clients.append(
+                Client(
+                    client_id=int(row["client_id"]),
+                    full_name=row["full_name"],
+                    postcode=row["postcode"],
+                )
+            )
+    return clients
+
+
+def load_carers(path: str) -> List[Carer]:
+    carers = []
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            carers.append(
+                Carer(
+                    carer_id=int(row["carer_id"]),
+                    full_name=row["full_name"],
+                    shift_start=_parse_time(row["shift_start"]),
+                    shift_end=_parse_time(row["shift_end"]),
+                    skills=row.get("skills", "") or "",
+                )
+            )
+    return carers
+
+
+def load_calls(path: str) -> List[Call]:
+    calls = []
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            calls.append(
+                Call(
+                    call_id=int(row["call_id"]),
+                    client_id=int(row["client_id"]),
+                    day_pattern=row["day_pattern"],
+                    start_time=_parse_time(row["start_time"]),
+                    end_time=_parse_time(row["end_time"]),
+                    duration_minutes=int(row["duration_minutes"]),
+                )
+            )
+    return calls
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 
 # ---------------------------------------------------------------------------
@@ -308,6 +442,7 @@ def _overlaps(start_a: int, end_a: int, start_b: int, end_b: int) -> bool:
     return start_a < end_b and start_b < end_a
 
 
+<<<<<<< HEAD
 def _window_bounds(start_time: datetime.time, end_time: datetime.time):
     """
     Returns (start_minutes, end_minutes) for a window, where end_minutes may
@@ -330,18 +465,32 @@ class CapacityChecker:
     NOTE: This version ignores travel time and postcode distance —
     it only checks whether a carer's availability windows + existing calls
     leave a free slot on the requested day/time.
+=======
+class CapacityChecker:
+    """
+    Loads clients/carers/calls/assignments and answers availability questions.
+
+    NOTE: This version ignores travel time and postcode distance —
+    it only checks whether a carer's shift + existing calls leave a free
+    slot on the requested day/time. Travel-time awareness is added in Phase 2
+    once Google Maps is wired in.
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
     """
 
     def __init__(
         self,
         clients: List[Client],
         carers: List[Carer],
+<<<<<<< HEAD
         availability: List[CarerAvailability],
+=======
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
         calls: List[Call],
         assignments: List[Assignment],
     ):
         self.clients = {c.client_id: c for c in clients}
         self.carers = {c.carer_id: c for c in carers}
+<<<<<<< HEAD
         self.availability = availability
         self.calls = {c.call_id: c for c in calls}
         self.assignments = assignments
@@ -390,6 +539,13 @@ class CapacityChecker:
         return DAY_ORDER[(idx - 1) % 7]
 
     def calls_for_carer_on_day(self, carer_id: int, day: str) -> List[Call]:
+=======
+        self.calls = {c.call_id: c for c in calls}
+        self.assignments = assignments
+
+    def calls_for_carer_on_day(self, carer_id: int, day: str) -> List[Call]:
+        """All calls assigned to this carer that occur on the given weekday."""
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
         result = []
         for a in self.assignments:
             if a.carer_id != carer_id:
@@ -399,12 +555,17 @@ class CapacityChecker:
                 result.append(call)
         return sorted(result, key=lambda c: _to_minutes(c.start_time))
 
+<<<<<<< HEAD
     def check_carer_slot(
+=======
+    def is_carer_free(
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
         self,
         carer_id: int,
         day: str,
         start_time: datetime.time,
         duration_minutes: int,
+<<<<<<< HEAD
     ) -> Optional[str]:
         """
         Returns 'core', 'optional', or None (not free) for the requested slot.
@@ -412,10 +573,24 @@ class CapacityChecker:
         req_start = _to_minutes(start_time)
         req_end = req_start + duration_minutes
 
+=======
+    ) -> bool:
+        """True if the carer's shift covers this window and no existing call overlaps it."""
+        carer = self.carers[carer_id]
+        req_start = _to_minutes(start_time)
+        req_end = req_start + duration_minutes
+
+        shift_start = _to_minutes(carer.shift_start)
+        shift_end = _to_minutes(carer.shift_end)
+        if req_start < shift_start or req_end > shift_end:
+            return False  # outside working hours
+
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
         for call in self.calls_for_carer_on_day(carer_id, day):
             call_start = _to_minutes(call.start_time)
             call_end = call_start + call.duration_minutes
             if _overlaps(req_start, req_end, call_start, call_end):
+<<<<<<< HEAD
                 return None
 
         best_match = None
@@ -448,6 +623,34 @@ class CapacityChecker:
         return available
 
     def free_slots_for_carer(self, carer_id: int, day: str) -> List[str]:
+=======
+                return False
+
+        return True
+
+    def find_available_carers(
+        self,
+        day: str,
+        start_time: datetime.time,
+        duration_minutes: int,
+    ) -> List[Carer]:
+        """Returns every carer who is free for the requested slot (ignoring travel time)."""
+        available = []
+        for carer in self.carers.values():
+            if self.is_carer_free(carer.carer_id, day, start_time, duration_minutes):
+                available.append(carer)
+        return available
+
+    def free_slots_for_carer(self, carer_id: int, day: str) -> List[str]:
+        """
+        Returns a simple list of free time windows for a carer on a given day,
+        as human-readable strings, e.g. ['08:35-09:00', '09:45-17:00'].
+        """
+        carer = self.carers[carer_id]
+        shift_start = _to_minutes(carer.shift_start)
+        shift_end = _to_minutes(carer.shift_end)
+
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
         busy = []
         for call in self.calls_for_carer_on_day(carer_id, day):
             call_start = _to_minutes(call.start_time)
@@ -455,6 +658,7 @@ class CapacityChecker:
             busy.append((call_start, call_end))
         busy.sort()
 
+<<<<<<< HEAD
         def fmt(minutes: int) -> str:
             minutes = minutes % (24 * 60)
             return f"{minutes // 60:02d}:{minutes % 60:02d}"
@@ -585,6 +789,21 @@ class CapacityChecker:
             if day_matches_pattern(day, pattern_a) and day_matches_pattern(day, pattern_b):
                 return True
         return False
+=======
+        free_windows = []
+        cursor = shift_start
+        for call_start, call_end in busy:
+            if call_start > cursor:
+                free_windows.append((cursor, call_start))
+            cursor = max(cursor, call_end)
+        if cursor < shift_end:
+            free_windows.append((cursor, shift_end))
+
+        def fmt(minutes: int) -> str:
+            return f"{minutes // 60:02d}:{minutes % 60:02d}"
+
+        return [f"{fmt(s)}-{fmt(e)}" for s, e in free_windows if e > s]
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
 
 
 # ---------------------------------------------------------------------------
@@ -592,6 +811,7 @@ class CapacityChecker:
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     carers, availability = load_carers_and_availability("sample_data/carers.csv")
     clients, calls = load_clients_and_calls("sample_data/clients.csv")
 
@@ -680,3 +900,31 @@ if __name__ == "__main__":
             client_a = clients_by_id[call_a.client_id].full_name
             client_b = clients_by_id[call_b.client_id].full_name
             print(f"  {carer.full_name} on {day}: {client_a} -> {client_b}: {error_message}")
+=======
+    clients = load_clients("sample_data/clients.csv")
+    carers = load_carers("sample_data/carers.csv")
+    calls = load_calls("sample_data/calls.csv")
+
+    # Sample assignments matching the screenshots (carer_id, call_id) pairs.
+    # In the real system this table comes from the 'Carer Assigned' column.
+    assignments = [
+        Assignment(call_id=11, carer_id=6),  # Kaur, Harpreet -> Pearce, Lynn 08:15
+        Assignment(call_id=12, carer_id=6),  # Kaur, Harpreet -> Pearce, Lynn Friday 12:00
+        Assignment(call_id=4, carer_id=3),   # Bhachoo, Hardeep -> Adshead, Lois
+        Assignment(call_id=5, carer_id=3),
+    ]
+
+    checker = CapacityChecker(clients, carers, calls, assignments)
+
+    print("=== Free slots for Kaur, Harpreet on Monday ===")
+    for slot in checker.free_slots_for_carer(carer_id=6, day="Mon"):
+        print(" ", slot)
+
+    print()
+    print("=== Who is free Wednesday 14:00 for 30 minutes? ===")
+    available = checker.find_available_carers(
+        day="Wed", start_time=datetime.time(14, 0), duration_minutes=30
+    )
+    for carer in available:
+        print(" ", carer.full_name)
+>>>>>>> f3ebba744c78b2dfdb5d8ad39f7f2ace9dc39b0c
