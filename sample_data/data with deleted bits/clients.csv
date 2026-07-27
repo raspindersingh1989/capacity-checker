@@ -1,0 +1,234 @@
+call_id,full_name,postcode,day_pattern,start_time,end_time,duration_minutes
+1,Client 1,DA2 7HG   ,Thurs,11:00,16:00,300
+1,Client 1,DA2 7HG   ,Mon,11:00,17:00,360
+1,Client 1,DA2 7HG   ,Friday,11:00,16:00,300
+2,Client 2,DA12 5AS  ,Mon - Sun (minus tues),09:35,10:05,30
+2,Client 2,DA12 5AS  ,Mon - Sun,12:00,12:45,45
+2,Client 2,DA12 5AS  ,Mon - Sun,15:00,15:30,30
+3,Client 3,ME8 9NT,Wed,10:30,11:15,45
+4,Client 4,DA11 8LR  ,Mon - Sun,17:00,17:30,30
+4,Client 4,DA11 8LR  ,Mon - Sun,20:15,20:45,30
+4,Client 4,DA11 8LR  ,Mon - Sun,09:00,09:45,45
+5,Client 5,DA13 0EL  ,Mon - Sun,19:35,20:05,30
+5,Client 5,DA13 0EL  ,Mon - Sun,08:50,09:20,30
+6,Client 6,BR8 7RA,Mon - Sun,17:20,17:50,30
+6,Client 6,BR8 7RA,Mon - Sun,08:15,08:45,30
+7,Client 7,DA3 7RR   ,Mon - Sun,20:10,21:10,60
+7,Client 7,DA3 7RR   ,Mon - Sun,09:05,10:05,60
+7,Client 7,DA3 7RR   ,Mon - Sun,11:45,13:15,90
+7,Client 7,DA3 7RR   ,Mon - Sun,16:00,17:30,90
+8,Client 8,DA1 1YH,Mon - Sun,07:45,08:15,30
+8,Client 8,DA1 1YH,Mon - Sun,12:00,12:30,30
+8,Client 8,DA1 1YH,Mon - Sun,17:10,17:40,30
+8,Client 8,DA1 1YH,Mon - Sun,19:45,20:15,30
+9,Client 9,ME2 3BZ,Mon - Weds - Fri ,10:45,11:15,30
+10,Client 10,ME7 2RU   ,Friday,08:45,09:15,30
+11,Client 11,DA3 8RE   ,Mon - Sun,08:00,08:45,45
+12,Client 12,DA4 9AA   ,Mon - Sun,19:30,20:00,30
+12,Client 12,DA4 9AA   ,Mon - Sun,08:00,09:00,60
+13,Client 13,ME8 6NU,"Weds, Fri",16:00,17:00,60
+13,Client 13,ME8 6NU,Monday,08:30,11:30,180
+14,Client 14,DA13 0SJ  ,Mon & Thur,10:30,11:30,60
+15,Client 15,DA13 9DR  ,Mon - Fri,09:30,10:00,30
+16,Client 16,DA11 8LW  ,Mon - Sun,09:00,10:00,60
+16,Client 16,DA11 8LW  ,Mon - Sun,13:00,13:30,30
+17,Client 17,DA12 5EB,Mon- Sun,09:30,10:15,45
+18,Client 18,ME3 7BD,Mon - Sun,08:35,09:05,30
+18,Client 18,ME3 7BD,Mon - Sun,08:35,09:05,30
+19,Client 19,DA9 9QD,Mon - Sun,10:45,11:15,30
+19,Client 19,DA9 9QD,Mon - Sun,16:50,17:20,30
+20,Client 20,DA2 6DA   ,Mon - Sun,09:00,10:00,60
+20,Client 20,DA2 6DA   ,Mon - Sun,21:30,22:00,30
+20,Client 20,DA2 6DA   ,Mon - Sun,09:00,10:00,60
+20,Client 20,DA2 6DA   ,Mon - Sun,16:45,17:15,30
+20,Client 20,DA2 6DA   ,Mon - Sun,21:30,22:00,30
+21,Client 21,DA2 8BY   ,Mon - Sun,10:30,11:00,30
+21,Client 21,DA2 8BY   ,Mon - Sun,19:30,20:00,30
+22,Client 22,DA11 0SY  ,"Mon, Wed, Fri",12:00,12:30,30
+23,Client 23,DA11 8PJ  ,Mon - Sun,07:00,07:45,45
+23,Client 23,DA11 8PJ  ,Mon - Sun (minus weds),12:00,12:30,30
+24,Client 24,DA10 0HD,Mon - Sun ,10:00,10:30,30
+25,Client 25,DA11 0BT  ,"Mon, Tue and Thurs",10:15,11:15,60
+25,Client 25,DA11 0BT  ,Sunday,10:15,10:45,30
+26,Client 26,ME8 8PB   ,Mon - Sun ,13:50,14:20,30
+26,Client 26,ME8 8PB   ,Mon - Sun ,09:50,10:35,45
+26,Client 26,ME8 8PB   ,Mon - Sun ,17:30,18:00,30
+26,Client 26,ME8 8PB   ,Mon - Sun ,21:00,21:30,30
+26,Client 26,ME8 8PB   ,Mon - Sun ,17:30,18:00,30
+26,Client 26,ME8 8PB   ,Mon - Sun ,09:50,10:35,45
+26,Client 26,ME8 8PB   ,Mon - Sun ,13:50,14:20,30
+26,Client 26,ME8 8PB   ,Mon - Sun ,21:00,21:30,30
+27,Client 27,DA3 8HB   ,Mon - Fri,12:30,13:30,60
+27,Client 27,DA3 8HB   ,Mon - Sun,17:00,19:00,120
+27,Client 27,DA3 8HB   ,Mon - Sun,09:00,10:00,60
+28,Client 28,DA1 3LZ   ,Mon - Fri,09:20,10:20,60
+29,Client 29,ME8 9SZ   ,M-S,07:45,08:30,45
+29,Client 29,ME8 9SZ   ,M-S,20:15,20:45,30
+29,Client 29,ME8 9SZ   ,M-S,07:45,08:30,45
+29,Client 29,ME8 9SZ   ,M-S,20:15,20:45,30
+30,Client 30,DA13 9JP  ,Mon - Sun,19:00,19:30,30
+30,Client 30,DA13 9JP  ,Mon - Sun,10:00,10:30,30
+30,Client 30,DA13 9JP  ,Mon - Sun ,13:20,13:50,30
+31,Client 31,ME8 9BB   ,M-S,08:30,09:00,30
+31,Client 31,ME8 9BB   ,M-S (minus Sat),17:00,17:30,30
+32,Client 32,DA2 7HX   ,"Mon, Wed and Friday",08:30,09:00,30
+33,Client 33,ME2 2NG,Mon - Fri,11:00,12:00,60
+34,Client 34,DA1 2PU   ,Mon - Sun (excl Weds),13:00,14:00,60
+34,Client 34,DA1 2PU   ,Mon - Sun (excl Weds),09:00,10:00,60
+34,Client 34,DA1 2PU   ,Mon - Sun ,21:00,21:30,30
+35,Client 35,DA13 9DR  ,Mon - Sun,21:00,21:30,30
+35,Client 35,DA13 9DR  ,Mon - Sun ,17:30,18:00,30
+35,Client 35,DA13 9DR  ,Mon -Weds - Thurs ,07:00,07:30,30
+35,Client 35,DA13 9DR  ,Tues & Fri ,07:00,07:45,45
+35,Client 35,DA13 9DR  ,Mon - Sun,13:15,13:45,30
+36,Client 36,ME2 3QD,"Tues , Thurs , Sat , Sun ",16:50,17:20,30
+36,Client 36,ME2 3QD,"Tues , Thur , Sat , Sun ",09:15,09:45,30
+37,Client 37,ME5 7SA   ,Friday,08:00,10:00,120
+37,Client 37,ME5 7SA   ,Saturday,08:00,10:00,120
+38,Client 38,DA12 4JJ  ,Tues + Fri ,11:00,12:00,60
+39,Client 39,ME8 0AW,Mon ,11:00,13:00,120
+39,Client 39,ME8 0AW,Tues Weds Fri Sat Sun,11:00,12:00,60
+39,Client 39,ME8 0AW,Thurs ,16:30,17:00,30
+40,Client 40,DA1 2SW   ,Mon - Sun,11:00,12:00,60
+40,Client 40,DA1 2SW   ,Mon - Sun,15:50,16:50,60
+41,Client 41,ME2 3TQ,Mon - Sun,09:15,09:45,30
+41,Client 41,ME2 3TQ,Mon - Sun,09:15,09:45,30
+41,Client 41,ME2 3TQ,Mon - Sun,19:15,19:45,30
+41,Client 41,ME2 3TQ,Mon - Sun,19:15,19:45,30
+42,Client 42,ME3 7EW   ,Mon - Sun,09:05,09:35,30
+42,Client 42,ME3 7EW   ,Mon - Sun,09:05,09:35,30
+42,Client 42,ME3 7EW   ,Mon - Sun,10:00,10:30,30
+42,Client 42,ME3 7EW   ,Mon - Sun,10:00,10:30,30
+42,Client 42,ME3 7EW   ,Mon - Sun,21:30,22:00,30
+42,Client 42,ME3 7EW   ,Mon - Sun,21:30,22:00,30
+43,Client 43,DA1 1RF   ,Wed,11:00,12:00,60
+44,Client 44,DA11 9HL  ,Mon - Sun,09:10,09:40,30
+44,Client 44,DA11 9HL  ,Mon - Sun,19:10,19:40,30
+44,Client 44,DA11 9HL  ,Fri,09:10,10:10,60
+45,Client 45,DA11 7JR  ,Mon - Sun,07:45,08:15,30
+45,Client 45,DA11 7JR  ,Mon - Sun,12:30,13:00,30
+45,Client 45,DA11 7JR  ,Mon - Sun,18:30,19:00,30
+46,Client 46,DA12 5PA  ,"Mon,Wed, Fri",13:30,17:30,240
+46,Client 46,DA12 5PA  ,Thurs,13:30,15:30,120
+47,Client 47,DA12 4BX  ,Every other Monday,14:00,16:00,120
+48,Client 48,DA10 0AZ,Mon - Sun,07:00,07:30,30
+48,Client 48,DA10 0AZ,Mon - Sun,20:15,20:45,30
+49,Client 49,ME3 7JE   ,Mon - Sun,08:00,08:45,45
+50,Client 50,,Mon - Sun,10:10,10:55,45
+51,Client 51,DA3 8LB,Mon - Sun,10:20,10:50,30
+52,Client 52,TN15 6DL  ,Mon - Sun,07:00,08:30,90
+52,Client 52,TN15 6DL  ,Mon - Sun,12:45,13:45,60
+52,Client 52,TN15 6DL  ,Mon - Sun,07:00,08:30,90
+52,Client 52,TN15 6DL  ,Mon - Sun,08:30,09:00,30
+52,Client 52,TN15 6DL  ,Mon - Sun,17:30,19:00,90
+52,Client 52,TN15 6DL  ,Saturday,11:00,17:00,360
+52,Client 52,TN15 6DL  ,Mon - Sun,17:30,18:30,60
+52,Client 52,TN15 6DL  ,Mon - Sun,12:45,13:45,60
+53,Client 53,DA4 9DQ   ,Mon - Sun,10:05,10:50,45
+53,Client 53,DA4 9DQ   ,Mon - Sun,12:45,13:15,30
+53,Client 53,DA4 9DQ   ,Mon - Sun,19:00,19:30,30
+54,Client 54,DA13 9DR  ,Wed,11:45,13:45,120
+54,Client 54,DA13 9DR  ,Mon - Sun,13:45,14:15,30
+54,Client 54,DA13 9DR  ,Mon - Sun,08:45,09:30,45
+54,Client 54,DA13 9DR  ,Mon - Sun,18:00,18:30,30
+54,Client 54,DA13 9DR  ,Mon - Sun,20:30,21:00,30
+55,Client 55,ME3 7ER   ,Mon - Sun,20:55,21:25,30
+55,Client 55,ME3 7ER   ,Mon - Sun,10:05,10:35,30
+56,Client 56,DA12 2DF  ,Mon&Thurs,09:00,10:00,60
+57,Client 57,ME2 3UH,Mon - Sun,09:10,09:40,30
+58,Client 58,DA4 9AT   ,Mon - Fri,12:00,12:45,45
+59,Client 59,DA13 9DR  ,Mon - Sun,12:45,13:15,30
+59,Client 59,DA13 9DR  ,Mon - Sun,18:30,19:00,30
+59,Client 59,DA13 9DR  ,Mon - Sun,07:45,08:15,30
+59,Client 59,DA13 9DR  ,Mon - Sun,07:45,08:15,30
+59,Client 59,DA13 9DR  ,Mon - Sun,12:45,13:15,30
+59,Client 59,DA13 9DR  ,Mon - Sun,18:30,19:00,30
+60,Client 60,DA9 9HZ   ,Mon - Fri,08:00,08:30,30
+60,Client 60,DA9 9HZ   ,Mon,15:30,16:30,60
+60,Client 60,DA9 9HZ   ,Mon - Fri,16:30,17:00,30
+61,Client 61,DA12 2QN  ,Mon - Sun,11:00,11:30,30
+61,Client 61,DA12 2QN  ,Mon - Sun,18:00,18:30,30
+62,Client 62,DA2 6RW   ,Mon - Sun,10:00,10:45,45
+62,Client 62,DA2 6RW   ,Mon - Sun,12:15,12:45,30
+62,Client 62,DA2 6RW   ,Mon - Sun,19:15,19:45,30
+62,Client 62,DA2 6RW   ,Mon - Sun,16:10,16:40,30
+63,Client 63,DA3 8HR   ,Mon - Sun,10:15,10:45,30
+64,Client 64,BR8,Mon - Sun,18:00,19:00,60
+64,Client 64,BR8 7XW,Mon - Sun,09:00,10:00,60
+65,Client 65,DA3 7PJ,Friday,23:00,07:00,960
+65,Client 65,DA3 7PJ,Mon - Fri Hols,10:00,12:00,120
+65,Client 65,DA3 7PJ,Mon - Fri Hols,10:00,12:00,120
+65,Client 65,DA3 7PJ,Mon - Thurs,16:30,20:00,210
+65,Client 65,DA3 7PJ,Mon - Thurs,16:30,20:00,210
+65,Client 65,DA3 7PJ,Friday Hols,16:30,20:30,240
+65,Client 65,DA3 7PJ,Friday,16:30,20:30,240
+65,Client 65,DA3 7PJ,Friday,16:30,20:30,240
+65,Client 65,DA3 7PJ,Friday Hols,16:30,20:30,240
+65,Client 65,DA3 7PJ,Mon - Thurs Hols,17:30,20:30,180
+65,Client 65,DA3 7PJ,Mon - Thurs Hols,17:30,20:30,180
+66,Client 66,DA11 7JP  ,Mon - Sun,08:15,09:00,45
+66,Client 66,DA11 7JP  ,Friday,12:00,12:30,30
+67,Client 67,ME5 8QP,Weds,14:00,15:00,60
+68,Client 68,DA11 0PU  ,Mon - Sun,08:15,09:15,60
+68,Client 68,DA11 0PU  ,Mon - Sun,14:45,15:45,60
+69,Client 69,DA3 7BH   ,Mon - Sun,07:30,08:00,30
+69,Client 69,DA3 7BH   ,Wed,14:00,15:00,60
+70,Client 70,DA12 5NT,Mon - Sun,18:45,19:15,30
+70,Client 70,DA12 5NT,Mon - Sun,09:30,10:15,45
+71,Client 71,ME1 3HG   ,Mon and Fri,10:30,11:00,30
+72,Client 72,ME8 8EH   ,Mon - Sun,09:15,10:00,45
+72,Client 72,ME8 8EH   ,Mon - Sun,13:15,13:45,30
+72,Client 72,ME8 8EH   ,Mon - Sun ,18:30,19:00,30
+73,Client 73,DA13 9JY,Tues every other,11:00,12:00,60
+74,Client 74,DA13 0TH,Mon - Sun,14:10,14:40,30
+74,Client 74,DA13 0TH,Mon - Sun,17:55,18:25,30
+74,Client 74,DA13 0TH,Mon - Sun,09:20,10:05,45
+75,Client 75,DA13 9ND  ,Mon - Sun,07:00,08:00,60
+75,Client 75,DA13 9ND  ,Mon - Sun,17:40,18:25,45
+75,Client 75,DA13 9ND  ,Mon - Sun,21:30,22:00,30
+75,Client 75,DA13 9ND  ,Mon - Sun,13:45,14:15,30
+76,Client 76,DA3 7RW   ,Mon - Sun,12:00,12:30,30
+76,Client 76,DA3 7RW   ,Mon - Sun,20:10,20:40,30
+76,Client 76,DA3 7RW   ,Mon - Sun,07:00,07:45,45
+76,Client 76,DA3 7RW   ,Mon - Sun,12:00,12:30,30
+76,Client 76,DA3 7RW   ,Thurs,12:30,14:00,90
+76,Client 76,DA3 7RW   ,Mon - Sun,15:15,15:45,30
+76,Client 76,DA3 7RW   ,Mon - Sun,15:15,15:45,30
+76,Client 76,DA3 7RW   ,Mon - Sun,07:00,07:45,45
+76,Client 76,DA3 7RW   ,Mon - Sun,20:10,20:40,30
+77,Client 77,DA11 7FU  ,Mon - Sun,16:45,17:30,45
+77,Client 77,DA11 7FU  ,Mon - Sun,08:00,08:30,30
+77,Client 77,DA11 7FU  ,Mon - Sun,19:45,20:15,30
+77,Client 77,DA11 7FU  ,"M,T,T and F",08:30,09:00,30
+77,Client 77,DA11 7FU  ,"M, T, T &F",15:00,15:30,30
+78,Client 78,DA13 0TB  ,Mon - Fri,10:15,10:45,30
+78,Client 78,DA13 0TB  ,Tue,13:00,13:30,30
+79,Client 79,DA13 9QW  ,"Mon, Weds, Fri",11:20,11:50,30
+80,Client 80,DA10,Mon - Sun,10:35,11:05,30
+81,Client 81,ME4 6RB,Tus & Fri,12:00,13:00,60
+82,Client 82,DA1 5JQ   ,Tues and Thurs,09:00,16:00,420
+82,Client 82,DA1 5JQ   ,Wed,09:00,16:00,420
+83,Client 83,ME5 8JA   ,Mon - Sun,09:15,10:00,45
+84,Client 84,DA12 4DY  ,Mon - Sun,09:00,09:30,30
+84,Client 84,DA12 4DY  ,Mon - Sun,16:20,16:50,30
+85,Client 85,ME5 0JH   ,Weds & Thurs,09:00,09:30,30
+85,Client 85,ME5 0JH   ,Mon & Fri,10:00,10:30,30
+85,Client 85,ME5 0JH   ,Friday,12:00,17:00,300
+86,Client 86,DA3 8BU,Mon-Sun,07:00,07:30,30
+87,Client 87,ME3 7EW   ,Mon - Sun,10:10,11:10,60
+87,Client 87,ME3 7EW   ,Mon - Fri,18:45,19:30,45
+88,Client 88,,"Mon, Weds, Fri",12:00,13:00,60
+89,Client 89,ME2 1LJ   ,Mon - Sun,17:30,18:00,30
+90,Client 90,ME2 2EH   ,Sat and Sun,09:00,10:00,60
+90,Client 90,ME2 2EH   ,Sat and Sun,09:00,10:00,60
+91,Client 91,ME3 7BB,Sat & Sun,11:00,14:00,180
+92,Client 92,ME2 3ET,Friday,09:30,10:00,30
+93,Client 93,DA1 1JT,Friday,17:00,18:00,60
+94,Client 94,,Mon & Fri,11:00,15:00,240
+94,Client 94,,Fri,11:00,19:00,480
+95,Client 95,DA3 7LD   ,Mon - Sun,18:30,19:00,30
+95,Client 95,DA3 7LD   ,Mon - Sun,10:15,10:45,30
+96,Client 96,DA2 7ND   ,Mon - Fri,08:45,09:45,60
+96,Client 96,DA2 7ND   ,Mon - Sun,12:45,13:45,60
+96,Client 96,DA2 7ND   ,Mon - Sun,18:15,18:45,30
+97,Client 97,ME7 1QP   ,Mon and Wed,11:00,13:00,120

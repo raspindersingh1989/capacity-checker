@@ -1,0 +1,9 @@
+call_id,full_name,postcode,day_pattern,start_time,end_time,duration_minutes
+47,Client 47,DA12 4BX  ,Every other Monday,14:00,16:00,120
+73,Client 73,DA13 9JY,Tues every other,11:00,12:00,60
+65,Client 65,DA3 7PJ,Mon - Fri Hols,10:00,12:00,120
+65,Client 65,DA3 7PJ,Mon - Fri Hols,10:00,12:00,120
+65,Client 65,DA3 7PJ,Friday Hols,16:30,20:30,240
+65,Client 65,DA3 7PJ,Friday Hols,16:30,20:30,240
+65,Client 65,DA3 7PJ,Mon - Thurs Hols,17:30,20:30,180
+65,Client 65,DA3 7PJ,Mon - Thurs Hols,17:30,20:30,180
